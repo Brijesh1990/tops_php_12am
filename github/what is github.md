@@ -376,10 +376,10 @@ git push origin --delete feature/new-feature
 ```bash
    git init
    git add .
-   git commit -m '21-01-2026 all uploaded'
-   git remote add origin https://github.com/Brijesh1990/tops_php_12am.git 
+   git commit -m '21-01-2026 all uploaded' 
    git config --global user.name "Your Name"
    git config --global user.email "your.email@example.com"
+   git remote add origin https://github.com/Brijesh1990/tops_php_12am.git
    git push -u origin master 
 
 ```

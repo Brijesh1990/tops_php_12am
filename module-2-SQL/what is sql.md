@@ -332,3 +332,112 @@ DELETE FROM table_name WHERE user_id BETWEEN 6 AND 20;
 ```
 
 **Note:** After delete, data can be rolled back (using transactions).        
+
+
+## 2) DQL - stands for data query language
+
+DQL is used to **select all data or fetch all**
+
+ 1. select * all data from tables 
+
+ **syntax:**
+ ```
+ select * from tablename
+ ```
+
+ 2. select multiple column of data 
+
+ **syntax:**
+ ```
+ select id,name,email from tablename
+ ```
+
+ 3. select particular id of data 
+
+ **syntax:**
+ ```
+ select * from tablename where id=2
+ ```
+
+ 
+ 4. select particular name of data 
+
+ **syntax:**
+ ```
+ select * from tablename where name='bhavesh'
+
+ ```
+
+ 
+ 5. select alternate  of data from its id 
+
+ **syntax:**
+ ```
+ select * from tablename where id in (2,4,6)
+ ```
+
+ 
+ 6. select alternate  of data from its id 
+
+ **syntax:**
+ ```
+ select * from tablename where id in (2,4,6)
+ ```
+
+
+
+ 7. select data using limit 
+
+ **syntax:**
+ ```
+ select * from tablename where id limit 1,3;
+ ```
+
+
+ 7. select data using between 
+
+ **syntax:**
+ ```
+ select * from tablename where id between 1 and 3;
+ examples : 
+ select * from tbl_users where user_id between 4 and 6;
+
+ ```
+
+8. **using order by and group by**
+
+**order by**
+
+``` 
+order by is used to filter data in ascending and descending order
+
+```
+
+**syntax**
+```
+select * from tbl_users   order by  name asc;
+or
+select * from tbl_users   order by  name;
+or 
+select * from tbl_users   order by  name desc;
+
+```
+
+
+**group by**
+
+``` 
+group by is used to filter data on group of columns
+
+```
+
+**syntax**
+```
+select * tbl_name group by column name;
+examples : select sum(salary),department from tbl_users group BY department
+or
+select sum(salary),department from tbl_users group BY department
+or
+
+select sum(salary),department as sum_of_department from tbl_users group BY department
+```
