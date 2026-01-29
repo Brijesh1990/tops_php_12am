@@ -209,7 +209,6 @@ DROP DATABASE flipkart_db;
 ```sql
 DROP TABLE tbl_country;
 ``` 
-  
 
 ## DML (Data Manipulation Language)
 
@@ -244,7 +243,6 @@ INSERT INTO table_name VALUES ('null', 'val1', 'val2');
 INSERT INTO tbl_users (name, photo, email, password, address, phone, salary) 
 VALUES ('vijay', 'vijay.jpg', 'vijay@gmail.com', 'v123', '150 feet ring road', 9998003879, 18500);
 ```
-
 ### Multiple Data Insert
 
 **Syntax:**
@@ -330,13 +328,13 @@ DELETE FROM tbl_users WHERE user_id IN (1, 2);
 ```sql
 DELETE FROM table_name WHERE user_id BETWEEN 6 AND 20;
 ```
-
 **Note:** After delete, data can be rolled back (using transactions).        
-
 
 ## 2) DQL - stands for data query language
 
-DQL is used to **select all data or fetch all**
+DQL is used to select all data or fetch all data from tables 
+
+ **select all data or fetch all**
 
  1. select * all data from tables 
 
@@ -344,7 +342,6 @@ DQL is used to **select all data or fetch all**
  ```
  select * from tablename
  ```
-
  2. select multiple column of data 
 
  **syntax:**
@@ -358,7 +355,6 @@ DQL is used to **select all data or fetch all**
  ```
  select * from tablename where id=2
  ```
-
  
  4. select particular name of data 
 
@@ -368,15 +364,15 @@ DQL is used to **select all data or fetch all**
 
  ```
 
- 
  5. select alternate  of data from its id 
 
  **syntax:**
  ```
  select * from tablename where id in (2,4,6)
- ```
-
+ examples :
+ select * from tbl_users where user_id in (2,4,6)
  
+ ```
  6. select alternate  of data from its id 
 
  **syntax:**
@@ -384,16 +380,12 @@ DQL is used to **select all data or fetch all**
  select * from tablename where id in (2,4,6)
  ```
 
-
-
  7. select data using limit 
 
  **syntax:**
  ```
  select * from tablename where id limit 1,3;
  ```
-
-
  7. select data using between 
 
  **syntax:**
@@ -405,14 +397,10 @@ DQL is used to **select all data or fetch all**
  ```
 
 8. **using order by and group by**
-
 **order by**
-
 ``` 
 order by is used to filter data in ascending and descending order
-
 ```
-
 **syntax**
 ```
 select * from tbl_users   order by  name asc;
@@ -422,15 +410,13 @@ or
 select * from tbl_users   order by  name desc;
 
 ```
-
-
 **group by**
-
 ``` 
 group by is used to filter data on group of columns
+examples :
 
+select sum(salary),department from tbl_users where department in ('IT','CSE','HR') group by department;
 ```
-
 **syntax**
 ```
 select * tbl_name group by column name;
@@ -440,4 +426,26 @@ select sum(salary),department from tbl_users group BY department
 or
 
 select sum(salary),department as sum_of_department from tbl_users group BY department
+or
+select sum(salary),department from tbl_users where department in ('IT','CSE','HR') group by department;
 ```
+
+## search any data from tables there we used like operator 
+
+   **search name start with a letter**
+   ```
+   select * from tbl_users where name like 'a%';
+
+   ```
+   **search name end with h letter**
+   ```
+   select * from tbl_users where name like '%h';
+   ```
+     **search name end with abcds letter**
+
+## search name with pattern with  letter**
+   ```
+   select * from tbl_users where name like 'a%';
+
+   ```
+   
