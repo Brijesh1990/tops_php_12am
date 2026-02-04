@@ -624,5 +624,70 @@ select sum(salary),department from tbl_users where department in ('IT','CSE','HR
    )
   ``` 
 
-
 ## sql join 
+
+  **types of join**
+  1. inner join
+  2. join 
+  3. outer join 
+     a) left join 
+     b) right join 
+     c) full join (mysql is not supported) 
+  4. cross    
+
+  join is used to join more than one tables with common field if data match join table otherwise return null value.
+
+  **join**
+  ```
+   select tbl_faculty.*, studentname from tbl_faculty join tbl_students on tbl_faculty.student_id=tbl_students.student_id;
+
+   or
+
+   select tbl_products.*,categoryname from tbl_products join tbl_category on tbl_products.category_id=tbl_category.category_id;
+
+  ```
+
+  **inner join**
+
+  join and inner join both are similar 
+
+  ```
+   select tbl_products.*,categoryname from tbl_products inner join tbl_category on tbl_products.category_id=tbl_category.category_id;
+
+   or
+
+  select product_id,productname,price,categoryname from tbl_products inner join tbl_category on tbl_products.category_id=tbl_category.category_id;
+ 
+  ```
+
+**outer join**
+  a) left join 
+  b) right join 
+  c) full join 
+
+  **left join**
+   left join is used to join first table of left rows to second table of left rows if data matched return all data otherwise return null value. 
+
+   ```
+  select tbl_products.*,categoryname from tbl_products left join tbl_category on tbl_products.category_id=tbl_category.category_id;
+   ```
+
+   
+  **right join**
+   right join is used to join second table of right rows to first table of right rows if data matched return all data otherwise return null value. 
+
+   ```
+  select tbl_products.*,categoryname from tbl_products right join tbl_category on tbl_products.category_id=tbl_category.category_id;
+   ```
+
+
+4. cross join 
+   cross join is used to join more than one tables and return a multiplication of repeated data.
+
+   table 1 total 4 data 
+   table 2 total 2 data
+
+   4*2=8  
+   ```
+   select * from tbl_products cross join tbl_category;
+   ```
