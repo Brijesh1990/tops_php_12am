@@ -269,6 +269,106 @@ echo $i;
 
   ```
 
-  
+## comments in php
+
+   A comment is used to explain the code and make it more readable there we used comments 
+
+   **types of comments**
+
+   1. single line comment 
+      **examples**
+      ```
+      // this is single line comment 
+      # this is also single line comment 
+      ```
+
+   2. multi line comment 
+      **examples**
+      ```
+      /* this is an examples of multi line comment
+      this is also an examples of multi line comment
+      this is also an examples of multi line comment
+      */
+      ``` 
    
+## var_dump() 
+   This is an inbuild method of php that can be used to print all description about variables.
+
+   This is also called variables handeling function in php 
+
+   **examples**
+   ```
+   <?php  
+   $a=10;
+   $b=20.56;
+  $c="brijesh pandey";
+  $d=true;
+  $e=false;
+  $f=null;
+
+  // echo $a."<br>".$b."<br>".$c."<br>".$d."<br>".$e."<br>".$f."<br>";
+  echo var_dump($a)."<br>";
+  echo var_dump($b)."<br>";
+  echo var_dump($c)."<br>";
+  echo var_dump($d)."<br>";
+  echo var_dump($e)."<br>";
+  echo var_dump($f)."<br>";
+
+  ?>
+```
+
+## differnece between echo and print in php
+
+   1. echo is faster than print 
+   2. echo can take multiple parameters but print can take only one parameter 
+   3. echo does not return any value but print return 1 value 
+   4. echo is more commonly used than print in php
+
+   **examples**
+   ```
+   <?php
+   // echo "hello world";
+   // print "hello world";
+   // echo "hello","world";
+   // print "hello","world"; // this will give error because print can take only one parameter
+   // echo (print "hello world"); // this will give 1 because print return 1 value
+   // print (echo "hello world"); // this will give error because echo does not return any value
+   ?>
+   ```
+
+## function in php 
+
+   A function is a block of code that can be used to completed any task.
+   **syntax of function**
+   ```
+  function function_name()
+  {
+   // statements
+  }
+  call function by its name
+  function_name();
+
+  ```
+   
+   **advantages of function**
+   1. code reusability
+   2. modularity
+   3. better readability
+   4. easy to debug
+
+
+
+   **types of function**
+   1. inbuild function
+   2. user defined function
+
+
+
+## variables handeling function in php 
+
+ 1. var_dump() : this function is used to print all description about variables
+ 2. isset() : this function is used to check whether a variable is set or not on server
+ 3. export() : this function is used to export a variable as a string
+ 4. empty() : this function is used to check whether a variable is empty or not
+ 5. unset() : this function is used to destroy a variable
 
