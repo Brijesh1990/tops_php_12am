@@ -372,3 +372,31 @@ echo $i;
  4. empty() : this function is used to check whether a variable is empty or not
  5. unset() : this function is used to destroy a variable
 
+
+
+## what is  php statements  ?
+
+  A php statements used conditional and looping statements 
+  A php can check true and false there we used conditional statements
+  A php can print numbers of iteration again and again or repeatation of numbers there we applied loop  
+
+  **conditional statements**
+
+  1. if 
+  2. if else
+  3. nested if 
+  4. if elseif 
+  5. switch 
+
+
+  **looping statements**
+
+  1. for
+  2. foreach
+  3. while 
+  4. do while 
+
+  **loop control statements**
+
+  1. break
+  2. continue
