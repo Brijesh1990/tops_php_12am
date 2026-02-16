@@ -9,19 +9,22 @@
 </head>
 <body>
 <?php 
-// check numbers is odd or even
+// leap years
 function display()
 {
 if(isset($_POST["chk"]))
 {
-$number=$_POST["number"];
-if($number%2==0)
+$age=$_POST["age"];
+if($age>=18)
 {  
-echo "<h1 class='alert alert-success alert-md w-75 mx-auto'>Even Numbers</h1>";
+echo "<h5 class='alert alert-success alert-md w-25 mx-auto text-center'>You are adult</h5>";
+header("location:welcome.php");
 }
 else 
 {
-echo "<h1 class='alert alert-danger alert-md w-75 mx-auto'>Odd Numbers</h1>";
+echo "<h5 class='alert alert-danger alert-md w-25 mx-auto text-center'>You are child</h5>";
+// message is not pass if condition is true or false 
+header("refresh:3,36-age-check-via-date.php");
 }
 }
 }
@@ -30,7 +33,7 @@ display();
 ?>
 <div class="container w-25 p-2 mt-5 mx-auto shadow">
 <form method="post">
-Enter a Number : <input type="text" name="number" placeholder="Enter a Numbers " required class="form-control mt-3">
+Enter your age : <input type="date" name="age" placeholder="Enter a age" required class="form-control mt-3">
 <br>
 <input type="submit" name="chk" value="Submit" class="btn btn-md btn-info"> 
 </form>
