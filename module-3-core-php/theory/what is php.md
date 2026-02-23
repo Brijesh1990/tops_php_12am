@@ -149,11 +149,11 @@
    // $name="Brijesh";
    // $c=10.56;
    // $d=114545656565;
-  // $e=true;
-  // echo $a."<br>".$b."<br>".$name;
+   // $e=true;
+   // echo $a."<br>".$b."<br>".$name;
 
 
-  // $a=10;
+   // $a=10;
   // echo $a;
 
   // $ab=10;
@@ -400,3 +400,30 @@ echo $i;
 
   1. break
   2. continue
+
+
+## what is array ?
+   An array is collection of multiple data will stored in a single variables
+   or 
+   An array stored multiples data in a single variables i.e called array
+
+   Note : array will stored data in key=>value
+
+   **types of array**   
+   1. numeric array or index array
+   2. associative array
+   3. multidimensional array 
+
+   ```
+     // how to declared array 
+    $arr=array("govind","harmit","vijay");
+   // array print always with print_r()
+   // array  will stored data key=>value
+   // array is start to stored on zero index
+   print_r($arr);
+   // output
+   // Array ( [0] => govind [1] => harmit [2] => vijay ) 
+   // print govind 
+   print_r($arr[0]);
+
+   ```
