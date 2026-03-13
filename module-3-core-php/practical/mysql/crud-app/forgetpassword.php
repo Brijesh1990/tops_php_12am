@@ -45,59 +45,32 @@ Manage users, roles and system settings from your admin dashboard.
 d="M5.121 17.804A8 8 0 1118.364 4.56 8 8 0 015.12 17.804z"/>
 </svg>
 </div>
-
 </div>
-
-
 <!-- Right Grid (Login Form) -->
 <div class="p-10 flex flex-col justify-center">
-
 <h2 class="text-2xl font-bold text-gray-700 mb-6">
-Admin Login
+Forget your Password ?
 </h2>
 
 <form class="space-y-5">
-
 <div>
 <label class="block text-sm text-gray-600 mb-1">
-Email
+Enter Email
 </label>
 <input type="email"
 class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 outline-none"
 placeholder="admin@email.com">
 </div>
 
-<div>
-<label class="block text-sm text-gray-600 mb-1">
-Password
-</label>
-<input type="password"
-class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 outline-none"
-placeholder="••••••••">
-</div>
 
 <div class="flex items-center justify-between text-sm">
-
-<label class="flex items-center gap-2">
-<input type="checkbox">
-Remember me
-</label>
-
-<a href="forgetpassword.php" class="text-indigo-600 hover:underline">
-Forgot password?
-</a>
-
 </div>
 
 <button
 class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
-Login
+Submit
 </button>
 </form>
-
-<div class="flex items-center justify-between text-sm mt-5">
-<b>Don't have an account create here <a href="register.php">Register here ?</a>
-</div>
 </div>
 </div>
 </body>
