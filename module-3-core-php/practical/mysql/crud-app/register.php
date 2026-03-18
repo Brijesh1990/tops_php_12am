@@ -4,10 +4,18 @@ include_once("config.php");
 if(isset($_POST["add_reg"]))
 {
 date_default_timezone_set("Asia/Calcutta");
+// upload a file or images
+$tmp_name=$_FILES["photo"]["tmp_name"];
+$size=$_FILES["photo"]["size"]/1024;
+$type=$_FILES["photo"]["type"];
+$photo="uploads/customers/".$_FILES["photo"]["name"];
+move_uploaded_file($tmp_name,$photo);
+
 $fullnm=$_POST["fullname"];
 $em=$_POST["email"];
 $pwd=base64_encode($_POST["password"]);
 $cpwd=base64_encode($_POST["confirmed_password"]);
+$phone=$_POST["phone"];
 $cn=$_POST["country"];
 $sn=$_POST["state"];
 $ct=$_POST["city"];
@@ -15,7 +23,7 @@ $date_time=date("d/m/Y H:i:s a");
 // query 
 if($pwd==$cpwd)
 {    
-$insert="insert into tbl_register(fullname,email,password,cid,sid,ctid,added_date_time) values ('$fullnm','$em','$pwd','$cn','$sn','$ct','$date_time')";
+$insert="insert into tbl_register(photo,fullname,email,password,phone,cid,sid,ctid,added_date_time) values ('$photo','$fullnm','$em','$pwd','$phone','$cn','$sn','$ct','$date_time')";
 $query=mysqli_query($con,$insert);
 if($query)
 {
@@ -118,7 +126,14 @@ d="M12 14l9-5-9-5-9 5 9 5z"/>
 Admin Registration
 </h2>
 
-<form method="post" class="space-y-5">
+<form method="post" class="space-y-5" enctype="multipart/form-data">
+
+<div>
+<label class="block text-sm text-gray-600 mb-1">Upload  Photo</label>
+<input type="file" name="photo"
+class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 outline-none"
+placeholder="Enter your Photo">
+</div>
 
 <div>
 <label class="block text-sm text-gray-600 mb-1">Full Name</label>
@@ -147,7 +162,12 @@ placeholder="Create password">
 class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 outline-none"
 placeholder="Confirm password">
 </div>
-
+<div>
+<label class="block text-sm text-gray-600 mb-1">Enter Phone</label>
+<input type="text" name="phone"
+class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 outline-none"
+placeholder="Enter your name">
+</div>
 <div>
 <label class="block text-sm text-gray-600 mb-1">Select country</label>
 <select name="country" id="country" onchange="return str(this.value)"

@@ -1,5 +1,6 @@
 <?php 
 // connection with mysqli
+session_start();
 $ser="localhost";
 $user="root";
 $pass="";

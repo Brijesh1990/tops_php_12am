@@ -1,6 +1,10 @@
 <?php 
 include_once("config.php");
 include_once("navigation.php");
+if(!isset($_SESSION["rid"]))
+{
+ header("location:index.php");   
+}
 // delete data 
 if(isset($_GET["deleteid"]))
 {
@@ -44,7 +48,8 @@ class="bg-green-600 text-white px-5 py-2 rounded-lg
 hover:bg-green-700 transition-all duration-300 hover:scale-105">
 Total Users <span class="bg-red-600 rounded-full p-1 ms-5">
 <?php 
-$select="select count(user_id) as totalusers from tbl_addusers";
+$rid=$_SESSION["rid"];
+$select="select count(user_id) as totalusers from tbl_addusers where rid='$rid'";
 $query=mysqli_query($con,$select);
 $fetch=mysqli_fetch_array($query);   
 echo $fetch["totalusers"];
@@ -59,7 +64,9 @@ echo $fetch["totalusers"];
 
 <!-- User Card 1 -->
 <?php 
-$select="select * from tbl_addusers order by user_id desc";
+//error_reporting(0);
+$rid=$_SESSION["rid"];
+$select="select * from tbl_addusers   where rid='$rid' order by user_id desc";
 $query=mysqli_query($con,$select);
 while($fetch=mysqli_fetch_array($query))
 {    

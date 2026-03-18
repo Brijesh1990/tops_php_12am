@@ -1,6 +1,34 @@
 <?php 
 include_once("config.php");
 // login here 
+if(isset($_POST["login_btn"]))
+{
+$email=$_POST["email"];
+$password=base64_encode($_POST["password"]);
+$select="select * from tbl_register where email='$email' and password='$password'";
+$query=mysqli_query($con,$select);
+$fetch=mysqli_fetch_array($query);
+$num_rows=mysqli_num_rows($query);
+if($num_rows==1)
+    {
+     $_SESSION["rid"]=$fetch["rid"];
+     $_SESSION["email"]=$fetch["email"];
+     $_SESSION["fullname"]=$fetch["fullname"];
+     echo "<script>
+     alert('You are Logged In successfully')
+     window.location='dashboard.php';
+     </script>";
+    }
+    else
+        {
+     echo "<script>
+     alert('Your email & password are incorrect try again')
+     window.location='index.php';
+     </script>";
+        }
+
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,24 +73,18 @@ Manage users, roles and system settings from your admin dashboard.
 d="M5.121 17.804A8 8 0 1118.364 4.56 8 8 0 015.12 17.804z"/>
 </svg>
 </div>
-
 </div>
-
-
 <!-- Right Grid (Login Form) -->
 <div class="p-10 flex flex-col justify-center">
-
 <h2 class="text-2xl font-bold text-gray-700 mb-6">
 Admin Login
 </h2>
-
-<form class="space-y-5">
-
+<form class="space-y-5" method="post">
 <div>
 <label class="block text-sm text-gray-600 mb-1">
 Email
 </label>
-<input type="email"
+<input type="email" name="email"
 class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 outline-none"
 placeholder="admin@email.com">
 </div>
@@ -71,7 +93,7 @@ placeholder="admin@email.com">
 <label class="block text-sm text-gray-600 mb-1">
 Password
 </label>
-<input type="password"
+<input type="password" name="password"
 class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 outline-none"
 placeholder="••••••••">
 </div>
@@ -89,7 +111,7 @@ Forgot password?
 
 </div>
 
-<button
+<button type="submit" name="login_btn"
 class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
 Login
 </button>
