@@ -1,6 +1,61 @@
 <?php 
 include_once("config.php");
-// login here 
+// mailer 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+try {
+//forget password  here 
+if(isset($_POST["frg_password"]))
+{
+require 'PHPMailer/Exception.php';
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
+//Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
+$email=$_POST["email"];
+$select="select password from tbl_register where email='$email'";
+$query=mysqli_query($con,$select);
+$fetch=mysqli_fetch_array($query);
+$num_rows=mysqli_num_rows($query);    
+//Server settings
+$mail->SMTPDebug = false;                      //Enable verbose debug output
+$mail->isSMTP();                                            //Send using SMTP
+$mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+$mail->Username   = '';                     //SMTP username
+$mail->Password   = '';                               //SMTP password
+$mail->SMTPSecure = "TLS";            //Enable implicit TLS encryption
+$mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+//Recipients
+$mail->setFrom($_POST["email"], 'Mailer');
+$mail->addAddress($_POST["email"], 'received');     //Add a recipient
+//Content
+$pass=base64_decode($fetch["password"]);
+$mail->isHTML(true);                                  //Set email format to HTML
+$mail->Subject = 'Get forget Password on email';
+$mail->Body    = 'Your password is :</b>'.$pass;
+$mail->send();
+if($num_rows==1)
+{
+echo "<script>
+alert('your password successfully send on your email checked email for Login')
+window.location='index.php';
+</script>";
+}
+else 
+{
+echo "<script>
+alert('your email is not registered try again')
+window.location='forgetpassword.php';
+</script>";   
+}
+}
+}
+catch (Exception $e){
+echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,22 +106,18 @@ d="M5.121 17.804A8 8 0 1118.364 4.56 8 8 0 015.12 17.804z"/>
 <h2 class="text-2xl font-bold text-gray-700 mb-6">
 Forget your Password ?
 </h2>
-
-<form class="space-y-5">
+<form method="post" class="space-y-5">
 <div>
 <label class="block text-sm text-gray-600 mb-1">
 Enter Email
 </label>
-<input type="email"
+<input type="email" name="email"
 class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 outline-none"
 placeholder="admin@email.com">
 </div>
-
-
 <div class="flex items-center justify-between text-sm">
 </div>
-
-<button
+<button type="submit" name="frg_password"
 class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
 Submit
 </button>
