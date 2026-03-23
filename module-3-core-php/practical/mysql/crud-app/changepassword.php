@@ -40,6 +40,7 @@ window.location='changepassword.php';
 
 }    
 ?>
+
 <div class="w-1/2 mx-auto  mb-8">
 <h1 class="text-3xl font-bold mt-8">Change Password</h1>
 <div class="space-x-4 mt-3">

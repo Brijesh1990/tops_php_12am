@@ -65,6 +65,7 @@ Dashboard
 <li><a href="#" class="block p-2 rounded hover:bg-slate-100">Users</a></li>
 <li><a href="#" class="block p-2 rounded hover:bg-slate-100">Add User</a></li>
 <li><a href="#" class="block p-2 rounded hover:bg-slate-100">Roles</a></li>
+<li><a href="enquiry.php" class="block p-2 rounded hover:bg-red-900 bg-red-700 text-white">Enquiry with us 👤</a></li>
 <li><a href="#" class="block p-2 rounded hover:bg-slate-100">Settings</a></li>
 
 </ul>
