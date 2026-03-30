@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2026 at 09:05 AM
+-- Generation Time: Mar 30, 2026 at 03:03 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `clickecommerceapp`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_admin`
+--
+
+CREATE TABLE `tbl_admin` (
+  `admin_id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_admin`
+--
+
+INSERT INTO `tbl_admin` (`admin_id`, `email`, `password`) VALUES
+(1, 'superadmin@gmail.com', 'admin123456');
 
 -- --------------------------------------------------------
 
@@ -119,6 +138,12 @@ CREATE TABLE `tbl_subcategory` (
 --
 
 --
+-- Indexes for table `tbl_admin`
+--
+ALTER TABLE `tbl_admin`
+  ADD PRIMARY KEY (`admin_id`);
+
+--
 -- Indexes for table `tbl_category`
 --
 ALTER TABLE `tbl_category`
@@ -160,6 +185,12 @@ ALTER TABLE `tbl_subcategory`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `tbl_admin`
+--
+ALTER TABLE `tbl_admin`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_category`

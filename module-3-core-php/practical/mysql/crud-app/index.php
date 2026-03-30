@@ -97,26 +97,20 @@ Password
 class="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-400 outline-none"
 placeholder="••••••••">
 </div>
-
 <div class="flex items-center justify-between text-sm">
-
 <label class="flex items-center gap-2">
 <input type="checkbox">
 Remember me
 </label>
-
 <a href="forgetpassword.php" class="text-indigo-600 hover:underline">
 Forgot password?
 </a>
-
 </div>
-
 <button type="submit" name="login_btn"
 class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
 Login
 </button>
 </form>
-
 <div class="flex items-center justify-between text-sm mt-5">
 <b>Don't have an account create here <a href="register.php">Register here ?</a>
 </div>

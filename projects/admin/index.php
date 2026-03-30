@@ -1,3 +1,21 @@
+<?php 
+require_once "include/config.php";
+require_once "fuctions.php";
+if (isset($_POST['btn_login'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    if (adminLogin($email, $password)) 
+        {
+        header("Location: dashboard.php");
+    } 
+    else 
+        {
+        echo "<script>
+        alert('Invalid email or password')
+        </script>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
@@ -27,14 +45,14 @@
 <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img class="logo-icon me-2" src="assets/images/app-logo.svg" alt="logo"></a></div>
 <h2 class="auth-heading text-center mb-5">Log in to Portal</h2>
 <div class="auth-form-container text-start">
-<form class="auth-form login-form">         
+<form method="POST" class="auth-form login-form">         
 <div class="email mb-3">
 <label class="sr-only" for="signin-email">Email</label>
-<input id="signin-email" name="signin-email" type="email" class="form-control signin-email" placeholder="Email address" required="required">
+<input id="signin-email" name="email" type="email" class="form-control signin-email" placeholder="Email address" required="required">
 </div><!--//form-group-->
 <div class="password mb-3">
 <label class="sr-only" for="signin-password">Password</label>
-<input id="signin-password" name="signin-password" type="password" class="form-control signin-password" placeholder="Password" required="required">
+<input id="signin-password" name="password" type="password" class="form-control signin-password" placeholder="Password" required="required">
 <div class="extra mt-3 row justify-content-between">
 <div class="col-6">
 <div class="form-check">
@@ -52,7 +70,7 @@ Remember me
 </div><!--//extra-->
 </div><!--//form-group-->
 <div class="text-center">
-<button type="submit" class="btn app-btn-primary w-100 theme-btn mx-auto">Log In</button>
+<button type="submit" name="btn_login" class="btn app-btn-primary w-100 theme-btn mx-auto">Log In</button>
 </div>
 </form>
 

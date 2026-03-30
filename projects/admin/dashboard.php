@@ -1,7 +1,14 @@
 <?php 
 require_once("include/config.php");
 require_once("include/header.php");
+require_once("fuctions.php");
 require_once("include/sidebar.php");
+// set session for admin login
+if (!isset($_SESSION['admin_id'])) {
+    echo "<script>
+    window.location='index.php';
+    </script>";
+}
 ?>
 <div class="app-wrapper">
 <div class="app-content pt-3 p-md-3 p-lg-4">
