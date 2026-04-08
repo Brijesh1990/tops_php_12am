@@ -65,9 +65,23 @@ function delProfile($rid)
         {
             return false;
         }
-
 }
-
+// create a function to update users data
+function updateProfile($rid,$name,$email,$gender,$phone)
+{
+   global $conn;
+   $rid=$_SESSION["r_id"];
+   $upd="update tbl_register set name='$name',email='$email',gender='$gender',phone='$phone' where rid='$rid'";
+   $query=mysqli_query($conn,$upd);
+   if($query)
+   {
+       return true;
+   }
+   else
+   {
+       return false;
+   }
+}          
 // create a function for logout 
 function logoutUsers()
 {
