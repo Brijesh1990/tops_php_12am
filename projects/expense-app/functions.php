@@ -12,6 +12,31 @@ $arr[]=$fetch;
 }       
 return $arr;
 }
+// create a count total added  expense 
+function getTotalExpense()
+{
+global $conn;
+$select="select count(expid) as total_expense from tbl_addexpense";
+$query=mysqli_query($conn,$select);
+while($fetch=mysqli_fetch_array($query))
+{
+$arr[]=$fetch;
+}       
+return $arr;
+}
+
+// create a function for sum of  subtotal of expense 
+function getSumExpense()
+{
+global $conn;
+$select="select sum(ammount) as total_sum_expense from tbl_addexpense";
+$query=mysqli_query($conn,$select);
+while($fetch=mysqli_fetch_array($query))
+{
+$arr[]=$fetch;
+}       
+return $arr;
+}
 //create a function for show all added expense 
 function getExpenseData()
 {
@@ -38,8 +63,36 @@ else
 {
 return false;
 }
+}
 
-
+// create a function for delete expanse data 
+function delExpenseData($id)
+{
+global $conn;
+$id=$_GET["deleteid"];
+$delete="delete from tbl_addexpense where expid='$id'";
+$query=mysqli_query($conn,$delete);
+if($query)
+{
+return true;
+}
+else 
+{
+return false;
+}
+}
+// create a function for edit expanse data 
+function editExpenseData($id)
+{
+global $conn;
+$id=$_GET["editid"];
+$delete="select * from tbl_addexpense where expid='$id'";
+$query=mysqli_query($conn,$delete);
+while($fetch=mysqli_fetch_array($query))
+{
+  $arr[]=$fetch;
+}   
+return $arr;
 }
 
 ?>

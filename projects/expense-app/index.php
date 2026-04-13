@@ -24,6 +24,27 @@ window.location='index.php';
 </script>";
 }
 }
+
+// delete a expense data
+if(isset($_GET["deleteid"]))
+{
+$id=$_GET["deleteid"];
+if(delExpenseData($id))
+{
+echo "<script>
+alert('expense deleted successfully')
+window.location='index.php';
+</script>";
+}  
+else
+{
+echo "<script>
+alert('something went wrong  to deleted expense')
+window.location='index.php';
+</script>";
+}
+
+}    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +62,12 @@ window.location='index.php';
 <h1 class="text-2xl font-bold text-gray-800">Expense Tracker</h1>
 <!-- Total Category Button (UI only) -->
 <button class="px-4 py-2 rounded-xl bg-indigo-600 text-white shadow-md hover:bg-indigo-700 transition-all duration-300 hover:scale-105 active:scale-95">
-Total by Category <span class="bg-white text-black rounded-full p-1">5</span>
+Total Expense <span class="bg-white text-black rounded-full p-1"> 
+<?php 
+$total_exp=getTotalExpense();
+echo $total_exp[0]["total_expense"]; 
+?>
+</span>
 </button>
 </div>
 <!-- Form Card -->
@@ -123,13 +149,25 @@ foreach($expData as $row)
 <td class="p-3"><?php echo $row["added_date_time"];?></td>
 <td>
 
-<a href="" class="bg-red-500 text-white rounded-2xl p-2">Delete</a>
-<a href="" class="bg-green-500 text-white rounded-2xl p-2">Edit</a>
+<a href="index.php?deleteid=<?php echo $row["expid"];?>" onclick="return confirm('Are you sure to delete Data ?')" class="bg-red-500 text-white rounded-2xl p-2">Delete</a>
+<a href="edit.php?editid=<?php echo $row["expid"];?>" class="bg-green-500 text-white rounded-2xl p-2">Edit</a>
 </td>
 </tr>
 <?php 
 }
 ?>
+
+<tr class="bg-gray-200 p-10">
+<td colspan="6">
+<h1 class="p-3 text-black float-end text-2xl">
+Subtotal of Rs.<?php
+$sum_expense=getSumExpense();
+echo $sum_expense[0]["total_sum_expense"];
+?>
+</h1>
+</td>
+</tr>
+
 </tbody>
 </table>
 </div>
