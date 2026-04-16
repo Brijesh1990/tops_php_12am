@@ -86,12 +86,42 @@ function editExpenseData($id)
 {
 global $conn;
 $id=$_GET["editid"];
-$delete="select * from tbl_addexpense where expid='$id'";
-$query=mysqli_query($conn,$delete);
+$edit="select tbl_addexpense.*,categoryname from tbl_addexpense join tbl_expcategory on tbl_addexpense.catid=tbl_expcategory.catid where expid='$id'";
+$query=mysqli_query($conn,$edit);
 while($fetch=mysqli_fetch_array($query))
 {
-  $arr[]=$fetch;
+$arr[]=$fetch;
 }   
+return $arr;
+}
+
+// create a function for update expanse data 
+function updExpenseData($id,$name,$catname,$desc,$ammount,$added_date)
+{
+global $conn;
+$id=$_GET["editid"];
+$upd="update tbl_addexpense set name='$name',catid='$catname',descriptions='$desc',ammount='$ammount',added_date_time='$added_date' where expid='$id'";
+$query=mysqli_query($conn,$upd);
+if($query)
+{
+return true;
+}
+else 
+{
+return false;
+}
+}
+
+// create a function for print bill 
+function getBill()
+{
+global $conn;
+$select="select * from tbl_addexpense";
+$query=mysqli_query($conn,$select);
+while($fetch=mysqli_fetch_array($query))
+{
+$arr[]=$fetch;
+}       
 return $arr;
 }
 

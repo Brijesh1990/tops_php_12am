@@ -6,6 +6,32 @@ if(isset($_GET["editid"]))
 $id=$_GET["editid"];
 $editdata=editExpenseData($id);
 }
+// update logic here
+if(isset($_POST["upd_exp"]))
+{
+$id=$_GET["editid"];    
+$catname=$_POST["catname"];
+$name=$_POST["expname"];
+$desc=$_POST["desc"];
+$ammount=$_POST["ammount"];
+$added_date=$_POST["added_date"];
+// call a function for update
+$updExp=updExpenseData($id,$name,$catname,$desc,$ammount,$added_date);
+if($updExp)
+{
+echo "<script>
+alert('expense updated successfully')
+window.location='index.php';
+</script>";
+}
+else
+{
+echo "<script>
+alert('something went wrong')
+window.location='index.php';
+</script>";
+}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,10 +68,21 @@ echo $total_exp[0]["total_expense"];
 $arr=getCategory();
 foreach($arr as $value)
 {
+if($editdata[0]['catid']==$value["catid"])
+    {
 ?>
-<option value="<?php echo $value["catid"];?>"><?php echo $value["categoryname"];?></option>
+<option value="<?php echo $editdata[0]["catid"];?>"  selected='selected'><?php echo $editdata[0]["categoryname"];?></option>
+
 
 <?php 
+}
+else 
+    {
+?>
+
+<option value="<?php echo $value["catid"];?>"><?php echo $value["categoryname"];?></option>
+<?php
+}
 }
 ?>
 </select>
@@ -66,7 +103,7 @@ class="p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-indigo-400 
 
 <!-- Submit Button -->
 <div class="md:col-span-2">
-<button type="submit" name="add_exp"
+<button type="submit" name="upd_exp"
 class="w-full py-3 rounded-xl bg-indigo-600 text-white font-semibold shadow-md 
 transition-all duration-300 hover:bg-indigo-700 hover:shadow-xl 
 hover:scale-[1.02] active:scale-95 relative overflow-hidden">

@@ -53,6 +53,12 @@ window.location='index.php';
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Expense Tracker</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script type="text/javascript">
+function prBill()
+{
+window.print();    
+}
+</script>    
 </head>
 
 <body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen p-4">
@@ -167,7 +173,11 @@ echo $sum_expense[0]["total_sum_expense"];
 </h1>
 </td>
 </tr>
-
+<tr class="bg-gray-200 p-10">
+<td colspan="6">
+<a href='bill.php'><button class="p-3 bg-red-600 text-white p-3 rounded-xl mb-3 float-end text-2xl" onclick="return confirm('Are you sure to get Invoice')">Get Invoice ?</button></a>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
