@@ -2,6 +2,11 @@
 require_once("functions.php");
 require_once("includes/header.php");
 require_once("includes/sidebar.php");
+// set session 
+if(!isset($_SESSION["adminid"]))
+{
+header("location:index.php");
+}  
 ?>
 
 <!-- Content -->
