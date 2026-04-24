@@ -82,25 +82,43 @@ if(insertalldata('tbl_addproducts',$data))
 
 <!-- Table -->
 <div class="card mt-4 p-3 shadow">
-<h5>Manage Category</h5>
+<h5>Manage Products</h5>
 
 <table class="table mt-3">
 <tr>
 <th>ID</th>
-<th>Customer</th>
-<th>Amount</th>
-<th>Status</th>
+<th>catname</th>
+<th>Photo</th>
+<th>Pname</th>
+<th>Oldprice</th>
+<th>NewPrice</th>
+<th>qty</th>
+<th>Desc</th>
+<th>Action</th>
 </tr>
-
+<?php 
+// display all products 
+$shwProducts=selectJoinData('tbl_addproducts','tbl_addcategory','catid','categoryname');
+foreach($shwProducts as $row)
+{
+?>
 <tr>
-<td>#101</td>
-<td>John</td>
-<td>$200</td>
-<td><span class="badge bg-success">Completed</span></td>
+<td><?php echo $row["pid"];?></td>
+<td><?php echo $row["categoryname"];?></td>
+<td><img src="<?php echo $row["photo"];?>" class="img-fluid" style="width:75px; height:75px; object-fit:cover" /></td>
+<td><?php echo $row["pname"];?></td>
+<td><?php echo $row["oldprice"];?></td>
+<td><?php echo $row["offerprice"];?></td>
+<td><?php echo $row["qty"];?></td>
+<td><?php echo $row["descriptions"];?></td>
+<td><a href="addproducts.php?deletepid=<?php echo $row["pid"];?>" class="btn btn-danger text-white">Delete</a>
+|
+<a href="editproduct.php?editpid=<?php echo $row["pid"];?>" class="btn btn-success text-white">Edit</a></td>
 </tr>
-
+<?php 
+}
+?>
 
 </table>
-
 </div>
 </div>

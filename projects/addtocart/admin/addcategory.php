@@ -47,19 +47,25 @@ if(insertalldata('tbl_addcategory',$data))
 <table class="table mt-3">
 <tr>
 <th>ID</th>
-<th>Customer</th>
-<th>Amount</th>
-<th>Status</th>
+<th>CategoryName</th>
+<th>Action</th>
 </tr>
-
+<?php 
+//fetch all category data
+$shwCategory=selectAllData('tbl_addcategory');
+foreach($shwCategory as $row)
+{    
+?>
 <tr>
-<td>#101</td>
-<td>John</td>
-<td>$200</td>
-<td><span class="badge bg-success">Completed</span></td>
+<td><?php echo $row["catid"];?></td>
+<td><?php echo $row["categoryname"];?></td>
+<td><a href="addcategory.php?deletecatid=<?php echo $row["catid"];?>" class="btn btn-danger text-white">Delete</a>
+|
+<a href="editcategory.php?editcatid=<?php echo $row["catid"];?>" class="btn btn-success text-white">Edit</a></td>
 </tr>
-
-
+<?php 
+}
+?>
 </table>
 
 </div>

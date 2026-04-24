@@ -38,7 +38,33 @@ function insertalldata($table,$data)
 
 }
 
-// create a function for add category
+// create a function for display all data
+function selectAllData($table)
+{
+    global $conn;
+    $select="select * from $table";
+    $query=mysqli_query($conn,$select);
+    while($fetch=mysqli_fetch_array($query))
+    {
+      $arr[]=$fetch;
+    }
+    return $arr;
+
+}
+
+// create a function for join all data
+function selectJoinData($table,$table1,$catid,$columnname)
+{
+    global $conn;
+    $select="select $table.*,$columnname from $table join $table1 on $table.$catid=$table1.$catid";
+    $query=mysqli_query($conn,$select);
+    while($fetch=mysqli_fetch_array($query))
+    {
+      $arr[]=$fetch;
+    }
+    return $arr;
+
+}
 
 // create a function for logout admin 
 function logout_admin()
