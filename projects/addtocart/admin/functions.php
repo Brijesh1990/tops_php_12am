@@ -66,6 +66,32 @@ function selectJoinData($table,$table1,$catid,$columnname)
 
 }
 
+// create a function for display all data select its id
+function selectAllDataId($table,$table1,$columnname,$catid,$id)
+{
+    global $conn;
+    $select="select $table.*,$columnname from $table join $table1 on $table.$catid=$table1.$catid where $table.$catid='$id'";
+    $query=mysqli_query($conn,$select);
+    while($fetch=mysqli_fetch_array($query))
+    {
+      $arr[]=$fetch;
+    }
+    return $arr;
+
+}
+
+function selectAllDataId1($table,$table1,$columnname,$catid,$pid,$id)
+{
+    global $conn;
+    $select="select $table.*,$columnname from $table join $table1 on $table.$catid=$table1.$catid where $table.$pid='$id'";
+    $query=mysqli_query($conn,$select);
+    while($fetch=mysqli_fetch_array($query))
+    {
+      $arr[]=$fetch;
+    }
+    return $arr;
+
+}
 // create a function for logout admin 
 function logout_admin()
 {
