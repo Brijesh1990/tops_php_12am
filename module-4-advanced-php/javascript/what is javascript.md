@@ -12,7 +12,7 @@
   10. javascript fast load on browsers
   11. javascript is also managed by ECM ecmascript organization
   12. javascript provide many framework and libraries 
-
+  13. javascript is case-senstive language 
        1. node js 
        2. react js 
        3. vue js 
@@ -30,5 +30,38 @@
        5. condition 
        6. array 
        7. string 
+
+# javascript used output method to print javascript 
+
+       1) alert 
+       2) confirm 
+       3) prompt
+       4) document.write()
+       5) document.writeln()
+       6) window.print()
+       7) document.getElementById()
+       8) addEventListener()
+       9) window.location=''
+       10) window.location.href()
        
+
+# javascript event ?
+
+   1. javascript event performed some actions there we used events 
+
+      **types of events in js** 
          
+       1. onclick
+       2. ondbclick
+       3. onChange
+       4. onsubmit
+       5. onblur
+       6. mouseover
+       7. onkeypress
+       8. onkeydown
+       9. onkeyup
+       10. onSrcoll
+       11. onload 
+       12. onunload
+
+       

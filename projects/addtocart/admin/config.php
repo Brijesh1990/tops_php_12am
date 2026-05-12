@@ -1,9 +1,18 @@
 <?php 
 session_start();
-$ser="localhost";
-$user="root";
-$pass="";
-$dbname="addtocart";
+
+//localhost
+// $ser="localhost";
+// $user="root";
+// $pass="";
+// $dbname="addtocart";
+// $conn=mysqli_connect($ser,$user,$pass,$dbname);
+
+//server
+$ser="sql208.byethost22.com";
+$user="b22_41863149";
+$pass="a123456";
+$dbname="b22_41863149_addtocart";
 $conn=mysqli_connect($ser,$user,$pass,$dbname);
 if($conn)
 {
