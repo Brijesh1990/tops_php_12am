@@ -29,4 +29,7 @@ Route::post('/contact-us',[ContactController::class,'store']);
 // load clickecomm app admin views here
 Route::get('/admin-login',[AdminLoginController::class,'index']);
 Route::get('/admin-login/dashboard',[AdminDashboardController::class,'index']);
+Route::get('/admin-login/manage-contacts',[ContactController::class,'show']);
+Route::get('/admin-login/manage-contacts/{id}',[ContactController::class,'destroy']);
+
 

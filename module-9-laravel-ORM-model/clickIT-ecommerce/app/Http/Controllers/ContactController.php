@@ -53,9 +53,11 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        //create a ORM query builder for show all data in admin
+        $data=ContactModel::all();
+        return view('clickecomm.admin.managecontacts',['data'=>$data]);
     }
 
     /**
@@ -89,6 +91,8 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //create a elquent ORM query builder for delete
+        ContactModel::where('id',$id)->delete();
+        return redirect('/admin-login/manage-contacts')->with('del','Your data successfully deleted');
     }
 }
