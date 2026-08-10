@@ -203,8 +203,8 @@
 </a><!--//nav-link-->
 <div id="submenu-1" class="collapse submenu submenu-1" data-bs-parent="#menu-accordion">
 <ul class="submenu-list list-unstyled">
-<li class="submenu-item"><a class="submenu-link" href="notifications.html">Add Category</a></li>
-<li class="submenu-item"><a class="submenu-link" href="account.html">Manage Category</a></li>
+<li class="submenu-item"><a class="submenu-link" href="/admin-login/addcategory">Add Category</a></li>
+<li class="submenu-item"><a class="submenu-link" href="/admin-login/managecategory">Manage Category</a></li>
 </ul>
 </div>
 </li><!--//nav-item-->

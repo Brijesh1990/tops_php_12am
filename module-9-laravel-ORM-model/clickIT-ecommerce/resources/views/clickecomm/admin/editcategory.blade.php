@@ -1,0 +1,95 @@
+@extends('clickecomm.admin.layout')
+
+@section('title-here')
+Dashboard
+@endsection
+
+@section('dashboard')
+
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+          <!-- set flash messages  -->
+      @if(Session('success'))       
+      <div class='p-3 bg-success font-bold  mt-3 rounded-xl w-50'>
+        <span class="p-3 text-white">
+          {{ session('success') }}
+        </span>
+      </div> 
+      @endif
+        <div class="row g-3 mb-4 align-items-center justify-content-between">
+
+            <div class="col-auto">
+                <h1 class="app-page-title mb-0">Edit Category</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-lg-8 col-xl-7">
+                <div class="app-card shadow-sm p-4">
+
+                    <form  method="POST">
+                        @csrf
+
+                        <!-- Category Name -->
+                        <div class="mb-3">
+                            <label for="category_name" class="form-label">
+                               Edit Category Name
+                            </label>
+                            <input
+                                type="text"
+                                class="form-control @error('categoryname') is-invalid @enderror"
+                                id="categoryname"
+                                name="categoryname"
+                                value="{{ $eddata->categoryname }}"
+                                placeholder="Edit category name"
+                               
+                            >
+
+                            @error('categoryname')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <!-- Description -->
+                        <div class="mb-3">
+                            <label for="descriptions" class="form-label">
+                                Edit Description
+                            </label>
+                            <textarea
+                                class="form-control @error('descriptions') is-invalid @enderror"
+                                id="descriptions"
+                                name="descriptions"
+                                rows="5"
+                                placeholder="Enter category description"
+                            >{{ $eddata->descriptions }}</textarea>
+
+                            @error('descriptions')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <!-- Add Button -->
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-plus me-1"></i>
+                                Update Category
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+</div>
+@endsection
