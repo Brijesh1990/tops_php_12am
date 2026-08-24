@@ -710,11 +710,11 @@
                             </div>
 
 
-                            <p class="product-description">
+                            <!-- <p class="product-description">
 
                                 {{ $product->description }}
 
-                            </p>
+                            </p> -->
 
 
                             <div class="product-price">

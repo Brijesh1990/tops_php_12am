@@ -22,16 +22,13 @@ Dashboard
 <button type="submit" class="btn app-btn-secondary">Search</button>
 </div>
 </form>
-
 </div><!--//col-->
 <div class="col-auto">
-
 <select class="form-select w-auto" >
 <option selected value="option-1">All</option>
 <option value="option-2">This week</option>
 <option value="option-3">This month</option>
 <option value="option-4">Last 3 months</option>
-
 </select>
 </div>
 <div class="col-auto">						    
@@ -90,11 +87,8 @@ Download CSV
 </tbody>
 </table>
 </div><!--//table-responsive-->
-
 </div><!--//app-card-body-->		
 </div><!--//app-card-->
-
-
 
 </div><!--//table-responsive-->
 </div><!--//app-card-body-->		

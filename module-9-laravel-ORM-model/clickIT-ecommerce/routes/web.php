@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\admin\AdminLoginController;
 use App\Http\Controllers\admin\AdminDashboardController;
 use App\Http\Controllers\admin\AddCategoryController;
+use App\Http\Controllers\admin\AddProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,12 @@ Route::get('/admin-login/managecategory',[AddCategoryController::class,'show']);
 Route::get('/admin-login/managecategory/{id}',[AddCategoryController::class,'destroy']);
 Route::get('/admin-login/editcategory/{id}',[AddCategoryController::class,'edit']);
 Route::post('/admin-login/editcategory/{id}',[AddCategoryController::class,'update']);
+
+// add products
+Route::get('/admin-login/addproducts',[AddProductController::class,'index']);
+Route::post('/admin-login/addproducts',[AddProductController::class,'store']);
+Route::get('/admin-login/manageproducts',[AddProductController::class,'show']);
+Route::get('/admin-login/manageproducts/{id}',[AddProductController::class,'destroy']);
+Route::get('/admin-login/editproducts/{id}',[AddProductController::class,'edit']);
+Route::post('/admin-login/editproducts/{id}',[AddProductController::class,'update']);
 

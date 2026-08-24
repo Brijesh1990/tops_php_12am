@@ -226,8 +226,8 @@
 </a><!--//nav-link-->
 <div id="submenu-2" class="collapse submenu submenu-2" data-bs-parent="#menu-accordion">
 <ul class="submenu-list list-unstyled">
-<li class="submenu-item"><a class="submenu-link" href="login.html">Add Products</a></li>
-<li class="submenu-item"><a class="submenu-link" href="signup.html">Manage Products</a></li>
+<li class="submenu-item"><a class="submenu-link" href="/admin-login/addproducts">Add Products</a></li>
+<li class="submenu-item"><a class="submenu-link" href="/admin-login/manageproducts">Manage Products</a></li>
 
 </ul>
 </div>
