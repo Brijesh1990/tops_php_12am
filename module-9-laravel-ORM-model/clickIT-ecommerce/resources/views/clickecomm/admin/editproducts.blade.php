@@ -1,8 +1,11 @@
 @extends('clickecomm.admin.layout')
+
 @section('title-here')
-Dashboard
+Update Products
 @endsection
+
 @section('dashboard')
+
 <div class="app-wrapper">
 <div class="app-content pt-3 p-md-3 p-lg-4">
 <div class="container-xl">
@@ -17,12 +20,14 @@ Dashboard
 <div class="row g-3 mb-4 align-items-center justify-content-between">
 
 <div class="col-auto">
-<h1 class="app-page-title mb-0">Add Products</h1>
+<h1 class="app-page-title mb-0">Edit Products</h1>
 </div>
 </div>
+
 <div class="row">
 <div class="col-12 col-lg-8 col-xl-7">
 <div class="app-card shadow-sm p-4">
+
 <form  method="POST" enctype="multipart/form-data">
 @csrf
 
@@ -51,39 +56,21 @@ placeholder="Enter category name">
 @enderror
 </div>
 
-<div class="mb-3">
-<label for="photo" class="form-label">
-Upload Photo
-</label>
-<input
-type="file"
-class="form-control @error('photo') is-invalid @enderror"
-id="photo"
-name="photo"
-value="{{ old('photo') }}"
-placeholder="Enter photo name"
->
-@error('photo')
-<div class="invalid-feedback">
-{{ $message }}
-</div>
-@enderror
-</div>
+
 
 
 <div class="mb-3">
-<label for="category_name" class="form-label">
-Product Name
+<label for="pname" class="form-label">
+Edit Pname
 </label>
-<input
-type="text"
+<input type="text"
 class="form-control @error('pname') is-invalid @enderror"
 id="pname"
 name="pname"
-value="{{ old('pname') }}"
-placeholder="Enter Pname"
-
+rows="5"
+placeholder="Enter Pname" value="{{$eddata->pname}}"
 >
+
 @error('pname')
 <div class="invalid-feedback">
 {{ $message }}
@@ -92,20 +79,40 @@ placeholder="Enter Pname"
 </div>
 
 
+<div class="mb-3">
+<label for="photo" class="form-label">
+<img src="{{asset('uploads/products/'.$eddata->photo)}}" style="width:85px; height:85px" />
+</label>
+<input type="file"
+class="form-control @error('photo') is-invalid @enderror"
+id="photo"
+name="photo"
+rows="5"
+placeholder="Enter photo" value="{{$eddata->photo}}"
+>
+
+@error('photo')
+<div class="invalid-feedback">
+{{ $message }}
+</div>
+@enderror
+</div>
+
+
+
 
 <div class="mb-3">
-<label for="oldprice" class="form-label">
-Old price
+<label for="pname" class="form-label">
+Edit Old price
 </label>
-<input
-type="text"
+<input type="text"
 class="form-control @error('oldprice') is-invalid @enderror"
 id="oldprice"
 name="oldprice"
-value="{{ old('oldprice') }}"
-placeholder="Enter Old Price"
-
+rows="5"
+placeholder="Enter Old Price" value="{{$eddata->oldprice}}"
 >
+
 @error('oldprice')
 <div class="invalid-feedback">
 {{ $message }}
@@ -114,19 +121,20 @@ placeholder="Enter Old Price"
 </div>
 
 
+
+
 <div class="mb-3">
-<label for="newprice" class="form-label">
-New price
+<label for="newpricee" class="form-label">
+Edit New price
 </label>
-<input
-type="text"
+<input type="text"
 class="form-control @error('newprice') is-invalid @enderror"
 id="newprice"
 name="newprice"
-value="{{ old('newprice') }}"
-placeholder="Enter Old Price"
-
+rows="5"
+placeholder="Enter new Price" value="{{$eddata->newprice}}"
 >
+
 @error('newprice')
 <div class="invalid-feedback">
 {{ $message }}
@@ -137,17 +145,16 @@ placeholder="Enter Old Price"
 
 <div class="mb-3">
 <label for="qty" class="form-label">
-Old price
+Edit Qty
 </label>
-<input
-type="number"
+<input type="text"
 class="form-control @error('qty') is-invalid @enderror"
 id="qty"
 name="qty"
-value="{{ old('qty') }}"
-placeholder="Enter Qty"
-
+rows="5"
+placeholder="Enter qty" value="{{$eddata->qty}}"
 >
+
 @error('qty')
 <div class="invalid-feedback">
 {{ $message }}
@@ -155,10 +162,14 @@ placeholder="Enter Qty"
 @enderror
 </div>
 
+
+
+
 <!-- Description -->
+
 <div class="mb-3">
 <label for="descriptions" class="form-label">
-Description
+Edit Description
 </label>
 <textarea
 class="form-control @error('descriptions') is-invalid @enderror"
@@ -166,7 +177,7 @@ id="descriptions"
 name="descriptions"
 rows="5"
 placeholder="Enter category description"
->{{ old('descriptions') }}</textarea>
+>{{ $eddata->descriptions }}</textarea>
 
 @error('descriptions')
 <div class="invalid-feedback">
@@ -175,14 +186,14 @@ placeholder="Enter category description"
 @enderror
 </div>
 
-
 <!-- Add Button -->
 <div class="mt-4">
 <button type="submit" class="btn btn-primary">
 <i class="fas fa-plus me-1"></i>
-Add Products
+Update Products
 </button>
 </div>
+
 </form>
 
 </div>

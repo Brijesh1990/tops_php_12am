@@ -102,6 +102,7 @@ class AddCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        AddCategory::where('id',$id)->delete();
+        return redirect('/admin-login/managecategory')->with('del','Your category successfully deleted');
     }
 }

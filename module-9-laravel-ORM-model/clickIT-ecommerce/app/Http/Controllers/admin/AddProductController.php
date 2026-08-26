@@ -49,9 +49,13 @@ class AddProductController extends Controller
             'descriptions' => 'required',
         ]);
 
+         // upload photo of products
+         $filename=rand().'.'.$request->photo->extension();
+         $request->photo->move(public_path('uploads/products'),$filename);
+
           $data=array(
               "catid"=>$request->categoryname,
-              "photo"=>$request->photo,
+              "photo"=>$filename,
               "pname"=>$request->pname,
               "oldprice"=>$request->oldprice,
               "newprice"=>$request->newprice,
@@ -71,9 +75,15 @@ class AddProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+      //create a show products data from tables and join category in it 
+      $products = DB::table('products')
+      ->join('addcategories', 'products.catid', '=', 'addcategories.id')
+      ->select('products.*', 'addcategories.categoryname')
+      ->get();
+      return view('clickecomm.admin.manageproducts',["products"=>$products]);
+
     }
 
     /**
@@ -84,7 +94,9 @@ class AddProductController extends Controller
      */
     public function edit($id)
     {
-        //
+         $eddata=AddProduct::where('id',$id)->first();
+         $category=DB::table('addcategories')->select('id','categoryname')->get();
+         return view('clickecomm.admin.editproducts',['eddata'=>$eddata,'category'=>$category]);
     }
 
     /**
@@ -96,7 +108,24 @@ class AddProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+              
+        // upload photo of products
+         $filename=rand().'.'.$request->photo->extension();
+         $request->photo->move(public_path('uploads/products'),$filename);
+
+          $eddata=array(
+              "catid"=>$request->categoryname,
+              "photo"=>$filename,
+              "pname"=>$request->pname,
+              "oldprice"=>$request->oldprice,
+              "newprice"=>$request->newprice,
+              "qty"=>$request->qty,
+              "descriptions"=>$request->descriptions
+
+        );
+         AddProduct::where('id',$id)->update($eddata);
+        return redirect('/admin-login/manageproducts')->with('success','Your Products update successfully');
     }
 
     /**
@@ -107,6 +136,8 @@ class AddProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        AddProduct::where('id',$id)->delete();
+        return redirect('/admin-login/manageproducts')->with('del','Your Products successfully deleted');
     }
 }
