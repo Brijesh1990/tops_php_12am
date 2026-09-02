@@ -26,6 +26,7 @@ Route::get('/',[HomeController::class,'index']);
 Route::get('/about-us',function(){
     return view('clickecomm.about');
 });
+// send email via contact form
 Route::get('/contact-us',[ContactController::class,'index']);
 Route::post('/contact-us',[ContactController::class,'store']);
 // load clickecomm app admin views here
